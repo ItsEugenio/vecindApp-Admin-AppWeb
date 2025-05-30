@@ -36,7 +36,7 @@ function ModalNeighborhood({ open, onOpenChange, put, data }) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const api = "https://vecindappback-production.up.railway.app";
+  const api = "https://vecindapp.up.railway.app";
 
   const handleChange = (e) => {
     const { name, value } = e.target;

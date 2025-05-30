@@ -22,7 +22,7 @@ function Navbar() {
           <h1 className="text-2xl  font-semibold">VecindApp Admin</h1>
         </div>
         <div>
-          <Button onClick={()=> cerrar()}>
+          <Button onClick={()=> cerrar()} className="bg-blue-950 text-white shadow-xs hover:bg-blue-950/90 focus-visible:ring-blue-950/20 dark:focus-visible:ring-blue-950/40" >
             <UserMinus />
             </Button>
         </div>

@@ -20,7 +20,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
   const residencialId = location.state?.residencialId;
-  const api = "https://vecindappback-production.up.railway.app";
+  const api = "https://vecindapp.up.railway.app";
   const token = localStorage.getItem("token");
 
   const getNeighborhood = async () => {

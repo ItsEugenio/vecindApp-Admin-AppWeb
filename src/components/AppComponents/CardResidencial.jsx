@@ -31,120 +31,102 @@ function CardResidencial({ residenciales, home }) {
 
   return (
     <>
-      {residenciales.length === 0 ? (
-        <div className="flex flex-col aling-center text-center">
-          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-            Agrega un residencial
-          </h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-          </div>
-        </div>
-      ) : (
+      {residenciales.map((residencial) => (
         <>
-          {residenciales.map((residencial) => (
-            <>
-              <Card className="py-0 overflow-hidden">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4 bg-primary/5">
-                  <CardTitle className="text-2xl font-medium">
-                    Información General
-                  </CardTitle>
-                  <BuildingApartment
-                    size={48}
-                    className="text-muted-foreground"
-                  />
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div>
-                      <span className="font-semibold">Nombre:</span>
-                      {residencial.nombre}
-                    </div>
-                    <div>
-                      <span className="font-semibold">Dirección:</span>
-                      {residencial.direccion}
-                    </div>
-                    <div>
-                      <span className="font-semibold">Colonia:</span>
-                      {residencial.colonia}
-                    </div>
-                    <div>
-                      <span className="font-semibold">Estado:</span>
-                      {residencial.estado}
-                    </div>
-                    {home ? (
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold">Código:</span>
-                        <Badge
-                          variant="outline"
-                          className="font-mono text-sm bg-primary/10 border-primary/20"
-                        >
-                          {residencial.codigo}
-                        </Badge>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-
-                    <div className="mt-4 mb-4">
-                      {home ? (
-                        <Button
-                          className="w-full"
-                          onClick={() => goToDashboard(residencial.id)}
-                          variant="blue"
-                        >
-                          Administrar
-                        </Button>
-                      ) : (
-                        <div className="flex w-full justify-center gap-4">
-                          <Button
-                            className="w-1/2 "
-                            onClick={() => {
-                              setOpen(true);
-                              setPut(true);
-                            }}
-                            variant="success"
-                          >
-                            <Pencil />
-                            Editar
-                          </Button>
-                          <Button
-                            className="w-1/2"
-                            onClick={() => {
-                              setOpenDelete(true);
-                              setIdNeigh(residencial.id);
-                              setNameNeigh(residencial.nombre);
-                            }}
-                            variant="destructive"
-                          >
-                            <Trash />
-                            Eliminar
-                          </Button>
-                        </div>
-                      )}
-                    </div>
+          <Card className="py-0 overflow-hidden">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4 bg-primary/5">
+              <CardTitle className="text-2xl font-medium">
+                Información General
+              </CardTitle>
+              <BuildingApartment size={48} className="text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div>
+                  <span className="font-semibold">Nombre:</span>
+                  {residencial.nombre}
+                </div>
+                <div>
+                  <span className="font-semibold">Dirección:</span>
+                  {residencial.direccion}
+                </div>
+                <div>
+                  <span className="font-semibold">Colonia:</span>
+                  {residencial.colonia}
+                </div>
+                <div>
+                  <span className="font-semibold">Estado:</span>
+                  {residencial.estado}
+                </div>
+                {home ? (
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">Código:</span>
+                    <Badge
+                      variant="outline"
+                      className="font-mono text-sm bg-primary/10 border-primary/20"
+                    >
+                      {residencial.codigo}
+                    </Badge>
                   </div>
-                </CardContent>
-              </Card>
-              <ModalNeighborhood
-                open={open}
-                onOpenChange={setOpen}
-                put={put}
-                data={residencial}
-              />
-              <ModalDelete
-                open={openDelete}
-                onOpenChange={setOpenDelete}
-                neighborhoodId={idNeigh}
-                neighborhoodName={nameNeigh}
-                type="vecindario"
-              />
-            </>
-          ))}
+                ) : (
+                  ""
+                )}
+
+                <div className="mt-4 mb-4">
+                  {home ? (
+                    <Button
+                      className="w-full "
+                      onClick={() => goToDashboard(residencial.id)}
+                     
+                    >
+                      Administrar
+                    </Button>
+                  ) : (
+                    <div className="flex w-full justify-center gap-4">
+                      <Button
+                        className="w-1/2 "
+                        onClick={() => {
+                          setOpen(true);
+                          setPut(true);
+                        }}
+                        variant="success"
+                      >
+                        <Pencil />
+                        Editar
+                      </Button>
+                      <Button
+                        className="w-1/2"
+                        onClick={() => {
+                          setOpenDelete(true);
+                          setIdNeigh(residencial.id);
+                          setNameNeigh(residencial.nombre);
+                        }}
+                        variant="destructive"
+                      >
+                        <Trash />
+                        Eliminar
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <ModalNeighborhood
+            open={open}
+            onOpenChange={setOpen}
+            put={put}
+            data={residencial}
+          />
+          <ModalDelete
+            open={openDelete}
+            onOpenChange={setOpenDelete}
+            neighborhoodId={idNeigh}
+            neighborhoodName={nameNeigh}
+            type="vecindario"
+          />
         </>
-      )}
+      ))}
     </>
   );
 }

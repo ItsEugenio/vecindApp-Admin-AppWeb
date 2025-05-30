@@ -23,7 +23,7 @@ function ModalDelete({
   const [openConfirm, setOpenConfirm] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const api = "https://vecindappback-production.up.railway.app";
+  const api = "https://vecindapp.up.railway.app";
 
   const deleteNeighborhood = async () => {
     const id = neighborhoodId;

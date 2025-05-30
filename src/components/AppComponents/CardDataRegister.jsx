@@ -18,9 +18,9 @@ function CardDataRegister({data,house}) {
     const residencialData = data[0]
     const [logsGuards, setLogsGuards] = useState([])
     const [openModal, setOpenModal] = useState(false)
-    const api = "https://vecindappback-production.up.railway.app";
+    const api = "https://vecindapp.up.railway.app";
     const token = localStorage.getItem("token");
-
+ 
     const getLogsGuard = async () => {
       try {
         const response  = await axios.get(

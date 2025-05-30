@@ -40,7 +40,7 @@ function TableResidents({ housesData }) {
   const [idResidencial, setIdResidencial] = useState("");
   const [logs, setLogs] = useState([]);
   const itemsPerPage = 5;
-  const api = "https://vecindappback-production.up.railway.app";
+  const api = "https://vecindapp.up.railway.app";
   const token = localStorage.getItem("token");
 
   const filteredHouses = housesData.filter(

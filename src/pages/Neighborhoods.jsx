@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { PlusCircle } from "@phosphor-icons/react";
 import CardResidencial from "@/components/AppComponents/CardResidencial";
 import ModalNeighborhood from "@/components/AppComponents/ModalNeighborhood";
+import CardSkeleton from "@/components/AppComponents/CardSkeleton";
 import axios from "axios";
 
 function Neighborhoods() {
-  const api = "https://vecindappback-production.up.railway.app";
+  const api = "https://vecindapp.up.railway.app";
   const token = localStorage.getItem("token");
   const [residenciales, setResidenciales] = useState([]);
   const [open, setOpen] = useState(false);
@@ -51,6 +52,20 @@ function Neighborhoods() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <CardResidencial residenciales={residenciales} home={true} />
           </div>
+          {residenciales.length === 0 ? (
+            <>
+              <div className="flex flex-col aling-center text-center">
+                <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                  Agrega un residencial
+                </h2>
+                <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                </div>
+              </div>
+            </>
+          ) : null}
         </main>
       </main>
       <ModalNeighborhood open={open} onOpenChange={setOpen} put={false} />
