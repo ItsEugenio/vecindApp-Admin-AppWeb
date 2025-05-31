@@ -89,7 +89,7 @@ function ModalDelete({
             </p>
           </div>
           <DialogFooter className="flex justify-center">
-            <Button onClick={() => onOpenChange(false)}>Cancelar</Button>
+            <Button variant="destructive" onClick={() => onOpenChange(false)}>Cancelar</Button>
             <Button variant="destructive" onClick={() => setOpenConfirm(true)}>
               <Trash size={28} />
               Elimiar {type}

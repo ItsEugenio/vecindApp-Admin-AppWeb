@@ -161,7 +161,7 @@ function ModalNeighborhood({ open, onOpenChange, put, data }) {
           ))}
         </div>
         <DialogFooter className="flex justify-center">
-          <Button onClick={() => onOpenChange(false)}>Cancelar</Button>
+          <Button variant="destructive" onClick={() => onOpenChange(false)}>Cancelar</Button>
           {put ? (
             <Button onClick={saveNewNieghborood} variant="success" disabled={isButtonDisabled}>
               <Pencil /> Actualizar datos

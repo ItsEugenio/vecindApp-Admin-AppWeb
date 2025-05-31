@@ -77,7 +77,7 @@ function CardResidencial({ residenciales, home }) {
                     <Button
                       className="w-full "
                       onClick={() => goToDashboard(residencial.id)}
-                     
+                     variant="blue"
                     >
                       Administrar
                     </Button>
